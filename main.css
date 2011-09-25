@@ -1,0 +1,66 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	text-align: left;
+	line-height: 2;
+}
+
+a, a:visited {
+	color: #2c2c2c;
+	text-decoration: none;
+}
+span {
+	padding-left: 50px;
+}
+.tweets {
+	font-size: 12px;
+    width: 80%;
+	padding-left: 50px;
+}
+.tweets li, ul {
+    list-style-type: none;
+}
+.tweets li {
+    padding: 5px;
+    margin: 10px;
+}
+
+a:hover {
+	border-bottom: 1px solid #000000;
+}
+
+.links {
+	position: absolute;
+	top: 220px;
+ 	width: 75%;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+}
+canvas, section {
+	display: block;
+}
+
+#c {
+	position: absolute;
+}
+
+#main_page {
+    margin: 50px;
+}
+
+#attribution {
+	bottom: 40px;
+	position: absolute;
+	right: 40px;
+}

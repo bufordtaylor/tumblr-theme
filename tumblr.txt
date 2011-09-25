@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link href="http://imawesomer.com/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<script type="text/javascript" src="http://imawesomer.com/js/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+var text_to_draw = "bufr overflow";
+var image_to_draw = false;
+var densityOverride = 3;
+</script>
+<script type="text/javascript" src="http://imawesomer.com/js/main.js"></script>
+
+    <title>{Title}{block:PostSummary}: {PostSummary}{/block:PostSummary}</title>
+    <meta name="viewport" content="width=710"/> <!-- iPhone -->
+    <!--<link rel="shortcut icon" href="{Favicon}">-->
+
+	{block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+<meta property="og:title" content="{block:PostTitle}
+
+{PostTitle}{/block:PostTitle}" />
+
+	<meta name="image:Background" content=""/>
+    <meta name="if:Show notes" content="1">
+    <meta name="if:Sidebar on left" content="0">
+    <meta name="if:Links below header" content="0">
+    <meta name="if:Random post link" content="0">
+    <meta name="text:Twitter name" content="" />
+    <meta name="text:Disqus Shortname" content=""/>
+    <meta name="text:Google Analytics ID" content="" />
+    <meta name="if:Share on Facebook link" content="0"/>
+	<meta name="if:Share on Twitter link" content="0"/>
+	<meta name="if:Twitter follow button" content="0"/>
+	
+	<meta name="color:Background" content="#EEEEEE"/>
+	<meta name="color:Background Inside" content="#FFFFFF"/>
+	<meta name="color:Font" content="#333333"/>
+	<meta name="color:Heading" content="#222222"/>
+    <meta name="color:Link" content="#4B6F86"/>
+    <meta name="color:Link Hover" content="#355A70"/>
+    <meta name="color:Heading Link" content="#333333"/>
+    <meta name="color:Color Hover Background" content="#EEEEEE"/>
+    <meta name="color:Shadow" content="#E4E4E4"/>
+    
+    <meta name="color:Borders" content="#E0E0E0"/>
+    <meta name="font:Headings" content="Lucida Sans">
+    <meta name="color:Border Top" content="#222"/>
+    <meta name="color:Footer and Sidebar Link" content="#666"/>
+    <meta name="color:Footer and Sidebar Link Hover" content="#111"/>
+    
+    <meta name="color:Background Disqus" content="#F5F5F5"/>
+    
+    
+    
+    {block:IfTwitterName}
+	<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+    {/block:IfTwitterName}
+   
+               
+    <style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;text-decoration:none}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}strong{font-weight:bold;}
+
+
+body {
+font: 12px Lucida Sans, Arial, sans-serif;
+background: {color:Background} url('{image:Background}') top left repeat;
+margin:0px;
+font-weight:300;
+color:{color:Font};
+text-align:left;
+border-top:2px solid {color:Border Top};
+-webkit-text-stroke:1px transparent;
+}
+
+h1,h2,h3,h4{
+font-family:{font:Headings}, Lucida Sans, Arial, sans-serif;
+}
+
+h1 {
+color:{color:Heading};
+font-weight:normal;
+font-size:36px;
+margin-top:20px;
+text-decoration:none;
+}
+
+h1 a {
+text-decoration:none;
+color:{color:Link};
+}
+
+h1 a:hover{
+text-decoration:{color:Link Hover};
+}
+
+h2 {
+color:{color:Heading};
+font-weight:normal;
+font-size:18px;
+margin-bottom:5px;
+}
+
+h3 {
+color:{color:Heading};
+font-weight:normal;
+font-size: 16px;
+}
+
+h4{
+font-size:24px;
+margin:10px 0;}
+h1:hover, h2:hover, h3:hover{
+background:{color:Color Hover Background};
+text-decoration:none;
+}
+
+a {
+color:{color:Link};
+text-decoration:none;
+}
+
+a:hover {
+color:{color:Link Hover};
+}
+
+p {
+margin:0px 0px 10px;
+line-height:18px;
+}
+
+#wrapper {
+width: 820px;
+margin: 0 auto;
+padding:20px 40px;
+background-color: {color:Background Inside};
+-moz-box-shadow: 0 3px 3px 3px {color:Shadow};
+-webkit-box-shadow: 0 3px 3px 3px {color:Shadow};
+box-shadow: 0 3px 3px 3px {color:Shadow};
+}			
+
+#header .description {
+font-size:14px;
+line-height:18px;			
+}
+
+#disqus{
+padding-top:20px;
+margin:25px 0;
+padding-bottom:0px;
+padding-left:40px;
+padding-right:40px;
+background:{color:Background Disqus};
+
+}
+
+.primary {
+text-align:justify;
+width:510px;
+padding:20px;
+padding-left:0;
+float:{block:IfSidebaronleft}right{/block:IfSidebaronleft}{block:IfNotSidebaronleft}left{/block:IfNotSidebaronleft};
+clear:none;
+}
+
+.sidebar {
+text-align: left;
+width: 230px;
+padding: 20px;
+padding-left: 0px;
+float: {block:IfSidebaronleft}left{/block:IfSidebaronleft}{block:IfNotSidebaronleft}right{/block:IfNotSidebaronleft};
+clear: none;
+}
+
+.post {
+clear: both;
+border-top:1px solid {color:Borders};
+}
+
+.meta {
+text-align:right;
+padding-top:5px;
+margin-top:5px;
+font-size:11px;
+}
+
+.post .date {
+color:{color:Link};
+margin-bottom:15px;
+font-size:11px;
+}
+
+.post .date a {
+color:{color:Link};
+}
+
+.post .date a:hover {
+color:{color:Footer and Sidebar Link Hover};
+color:{color:Footer and Sidebar Link Hover};
+background:{color:Borders};
+}
+
+.tags {
+margin-top:5px;
+border-top:2px solid {color:Borders};
+padding-top:5px;
+font-size:11px;
+}
+
+.meta span, .tags span  {
+line-height:18px;
+margin-right:5px;
+color:{color:Footer and Sidebar Link};
+display:inline-block;
+}
+
+.meta span {
+margin-right:0px;
+}
+
+.tags span a, .meta span a {
+color:{color:Footer and Sidebar Link};
+}
+
+.tags span a:hover, .meta span a:hover {
+background:{color:Color Hover Background};
+}	
+
+
+blockquote { 
+border-left:1px solid {color:Borders};
+padding-left:20px;
+margin:15px 0px;
+margin-left:20px;
+}
+
+.meta span.noteslink {
+float:left;
+}
+
+.meta span.permalink a {
+margin-left:20px;
+}
+
+.audio .caption {
+margin:10px 0px;
+}
+
+.post ul {
+list-style-type:disc;
+margin-left:25px;
+margin-bottom:10px;
+}
+
+.post li {
+line-height:18px;
+}
+
+.post ol {
+list-style-type:decimal;
+margin-left:25px;
+margin-bottom:10px;
+}
+
+.post h2 a {
+color:{color:Heading Link};
+}
+
+.plays {
+color:{color:Footer and Sidebar Link};
+font-size:11px;
+margin:5px 0px;
+display:block;
+}
+
+.quote .primary blockquote {
+font-style: italic;
+font-size: 20px;
+font-family:Georgia, "Times New Roman", Times, serif;
+color:#444;
+border:none;
+padding-left:0px;
+margin:5px 20px;
+margin-left:35px;
+}
+
+.quote .primary big {
+float: left;
+font-family: Arial, "Times New Roman", Times, serif;
+font-size:50px;
+font-weight:bold;
+margin-top:0px;
+display:block;
+}		
+
+.quote .primary .caption {
+font-size:12px;
+margin-left:35px;
+font-size:11px;
+color:{color:Footer and Sidebar Link};
+}
+
+.caption{
+margin-top:12px;
+}
+
+.extra{
+margin-right:8px;}
+.conversation ul {			
+list-style-type:  none;
+margin:0px;
+border:1px solid {color:Borders};
+padding:3px;
+}
+
+.conversation ul li {
+margin:0px;
+padding:9px 7px;
+}
+
+.conversation ul li .label {
+font-weight:bold;
+}
+
+.conversation ul li.odd {
+background:{color:Borders};
+}
+
+.photo img {
+border: 1px solid {color:Borders}; padding: 1px;
+}
+
+.twitter-follow-button {
+margin-top:5px !important;
+}
+
+.listnotes {
+border-top:1px solid {color:Borders};
+font-size:11px;
+padding:5px;
+margin-top:15px;
+margin-bottom:-5px;
+}
+
+ol.notes {
+list-style-type: none;
+margin:0;
+padding:0;
+}
+
+ol.notes li {
+margin:8px 0;
+padding:0;
+line-height:1;
+}
+
+ol.notes li.note img.avatar {
+vertical-align: middle;
+width: 14px;
+height: 14px;
+}
+
+ol.notes li.note .action {
+margin-left:2px;
+vertical-align: middle;
+}	
+
+ol.notes li.note blockquote {
+margin:2px 0px;
+margin-left:15px;
+padding-left:5px;
+display:inline;
+}	
+
+ol.notes li.note blockquote a {
+color:inherit;
+}	
+
+.footerandtop {
+clear:both;
+padding:20px 0;
+margin-bottom:30px;
+border-top:2px solid {color:Borders};
+color:{color:Footer and Sidebar Link Hover};
+text-align:center;
+font-size:11px;
+}
+
+.footerandtop a {
+color:{color:Footer and Sidebar Link};
+}
+
+.footerandtop a:hover {
+color:{color:Footer and Sidebar Link Hover};
+text-decoration: none;
+}
+
+.footerandtop .links {
+float:left;			
+}
+
+.footerandtop .nav a {
+background:{color:Borders};
+padding:7px;
+margin:0 6px;
+}
+
+.footerandtop .nav a:hover {
+background:{color:Color Hover Background};
+text-decoration:none;
+}
+
+.footerandtop .pinchhost {
+float:right;			
+}
+
+{CustomCSS} 
+
+
+	</style>
+
+{block:IfGoogleAnalyticsID}
+  
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{text:Google Analytics ID}']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+{/block:IfGoogleAnalyticsID}
+</head>
+<body>
+    <canvas id="c" width="800" height="200" ></canvas> 
+    <canvas id="buffercan" width="400" height="200" style="display:none"></canvas>
+	
+    <div id="wrapper">
+
+    	<div id="header">
+        	<div class="primary">
+            	<h1><a href="/">{Title}</a></h1>
+<br />Man fighting battle between work and working more. <br />
+                
+             {block:IfTwitterfollowbutton} {block:IfTwitterName} <a href="http://twitter.com/{text:Twitter name}" class="twitter-follow-button">Follow @{text:Twitter name}</a> {/block:IfTwitterName}{/block:IfTwitterfollowbutton}
+                
+            </div>
+            
+            
+            
+            {block:Description}
+            <div class="sidebar">
+                
+{Description}
+
+            </div>
+            {/block:Description}
+            
+            {block:IfLinksbelowheader}
+             <div class="footerandtop">
+        	<span class="links">
+            	<a title="Archive" href="/archive">{lang:Archive}</a>  {block:Iftwittername} | <a href="http://twitter.com/{text:Twitter name}">Twitter</a>{/block:Iftwittername} | <a href="{RSS}" title="RSS">{lang:Subscribe}</a> {block:Ifrandompostlink} | <a href="/random">{lang:Random}</a> {/block:Ifrandompostlink} {block:AskEnabled} | <a href="/ask">{AskLabel}</a> {/block:AskEnabled}
+                    {block:SubmissionsEnabled} | <a href="/submit">{SubmitLabel}</a> {/block:SubmissionsEnabled}
+                    
+                    {block:HasPages}
+					
+						{block:Pages}| <a href="{URL}">{Label}</a> {/block:Pages}
+					
+				{/block:HasPages}
+                    
+            </span>
+</div>{/block:IfLinksbelowheader}
+            
+    	</div>
+        <div id="content">
+        
+        	{block:Posts}
+        	<div class="post">
+            
+                {block:Regular}
+                <div class="regular">
+                    <div class="primary">        
+                        <div class="entry">
+{block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+<iframe src="http://www.facebook.com/plugins/like.php?href={Permalink}&amp;layout=standard&amp;show-faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:300px; height:75px"></iframe>
+
+                        {Body}
+<br />
+<iframe src="http://www.facebook.com/plugins/like.php?href={Permalink}&amp;layout=standard&amp;show-faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:300px; height:75px"></iframe>
+                        </div>
+                        
+                        {block:PermalinkPage}{block:IfDisqusShortname}
+    	    <div id="disqus"><div id="disqus_thread"></div>
+    	    <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+    	    <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript></div>
+    	    {/block:IfDisqusShortname}
+    	  {/block:PermalinkPage}
+                        
+                         {block:IfShowNotes}{block:PostNotes}
+                        	<div class="listnotes" id="listnotes"> 
+                                {PostNotes}        
+                            </div>
+                        {/block:PostNotes} {/block:IfShowNotes} 
+                    </div>
+                    <div class="sidebar">
+                   		{block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+                        <div class="date"><a href="{Permalink}">{Month} {DayOfMonth} {Year}</a> - {12Hour}:{Minutes}{AmPm}</div>
+                       
+                        <div class="meta">
+                        
+                        
+                        {block:IfDisqusShortname}
+          <span class="comments-link"><a href="{Permalink}#disqus_thread" class="permalink">{lang:Comments}</a></span>
+          {block:IfDisqusShortname}
+                        
+                           {block:IfShowNotes}{block:NoteCount}<span class="noteslink"><a href="{Permalink}">{NoteCountWithLabel}</a></span>{/block:NoteCount}{/block:IfShowNotes}<span class="permalink"><a href="{Permalink}">{lang:permalink}</a></span>
+                        </div>                                                    
+                         
+                        
+                                                 
+                        <div class="tags">
+                        {block:Tags}<span><a href="{TagURL}">#{Tag}</a></span>{/block:Tags}
+                        
+                        
+                      <br /><br />  {block:Ifshareontwitterlink} <span class="noteslink">/ Share <a href="http://twitter.com/intent/tweet?text=&url={Permalink}{block:Iftwittername}&via={text:Twitter name}{/block:Iftwittername}">Twitter</a></span> {/block:Ifshareontwitterlink} {block:Ifshareonfacebooklink} <span class="noteslink">/ Share <a href="http://www.facebook.com/sharer/sharer.php?u={Permalink}">Facebook</a></span>{/block:Ifshareonfacebooklink}
+                        
+                        </div>
+                        
+                        <div class="meta"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5829223418432940";
+/* bufr-side-ad */
+google_ad_slot = "0088147199";
+google_ad_width = 120;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+                        
+                        
+                        
+                    </div>
+
+                </div>
+                  
+                {/block:Regular}    
+            
+                {block:Photo}
+                <div class="photo">
+                    <div class="primary">        
+                        {LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>{LinkCloseTag}
+                        {block:Caption}
+                        <div class="caption">
+                            {Caption}
+                        </div>       
+                        {/block:Caption} 
+                        
+                        
+                        {block:PermalinkPage}{block:IfDisqusShortname}
+    	    <div id="disqus"><div id="disqus_thread"></div>
+    	    <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+    	    <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript></div>
+    	    {/block:IfDisqusShortname}
+    	  {/block:PermalinkPage}
+
+                        
+                        {block:IfShowNotes}{block:PostNotes}
+                        	<div class="listnotes" id="listnotes"> 
+                                {PostNotes}        
+                            </div>
+                        {/block:PostNotes} {/block:IfShowNotes}            
+                    </div>
+                    <div class="sidebar">
+                      
+                        <div class="meta">
+                        
+                        {block:IfDisqusShortname}
+          <span class="comments-link"><a href="{Permalink}#disqus_thread" class="permalink">{lang:Comments}</a></span>
+          {block:IfDisqusShortname}
+                        
+                        
+                                                
+                            {block:IfShowNotes}{block:NoteCount}<span class="noteslink"><a href="{Permalink}">{NoteCountWithLabel}</a></span>{/block:NoteCount}{/block:IfShowNotes}<span class="permalink"><a href="{Permalink}">{lang:permalink}</a></span>
+                        </div>                       
+                        
+                       
+                             
+                        
+                        
+                                                   
+                        <div class="tags">
+                          <div class="date"><br /><a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a> - {12Hour}:{Minutes}{AmPm}</div>
+
+
+{block:Ifshareontwitterlink} <span class="noteslink">/ Share <a href="http://twitter.com/intent/tweet?text=&url={Permalink}{block:Iftwittername}&via={text:Twitter name}{/block:Iftwittername}">Twitter</a></span> {/block:Ifshareontwitterlink}  {block:Ifshareonfacebooklink}  <span class="noteslink">/ Share <a href="http://www.facebook.com/sharer/sharer.php?u={Permalink}">Facebook</a></span>{/block:Ifshareonfacebooklink}
+                        
+                        
+
+
+                        </div>
+<div class="meta"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5829223418432940";
+/* bufr-side-ad */
+google_ad_slot = "0088147199";
+google_ad_width = 120;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+                    </div>
+                </div>
+                                  {/block:Photo}  
+                  
+                {block:Photoset}
+                <div class="photoset">
+                    <div class="primary">        
+                         {Photoset-500}   
+                         {block:Caption}
+                        <div class="caption">
+                            {Caption}
+                        </div>
+                        {/block:Caption}   
+                        
+                        {block:PermalinkPage}{block:IfDisqusShortname}
+    	    <div id="disqus"><div id="disqus_thread"></div>
+    	    <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+    	    <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript></div>
+    	    {/block:IfDisqusShortname}
+    	  {/block:PermalinkPage}
+                        
+                         {block:IfShowNotes}{block:PostNotes}
+                        	<div class="listnotes" id="listnotes"> 
+                                {PostNotes}        
+                            </div>
+                        {/block:PostNotes} {/block:IfShowNotes}             
+                    </div>
+                    <div class="sidebar">
+                        <div class="date"><a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a></div>
+                        
+                        
+                        
+                        <div class="meta">
+                        
+                        
+                        {block:IfDisqusShortname}
+          <span class="comments-link"><a href="{Permalink}#disqus_thread" class="permalink">{lang:Comments}</a></span>
+          {block:IfDisqusShortname}
+                        
+                            {block:IfShowNotes}{block:NoteCount}<span class="noteslink"><a href="{Permalink}">{NoteCountWithLabel}</a></span>{/block:NoteCount}{/block:IfShowNotes}<span class="permalink"><a href="{Permalink}">{lang:permalink}</a></span>
+                            
+                            
+                            {block:Ifshareontwitterlink} <span class="noteslink">/ Share <a href="http://twitter.com/intent/tweet?text=&url={Permalink}{block:Iftwittername}&via={text:Twitter name}{/block:Iftwittername}">Twitter</a></span> {/block:Ifshareontwitterlink} {block:Ifshareonfacebooklink} <span class="noteslink">/ Share <a href="http://www.facebook.com/sharer/sharer.php?u={Permalink}">Facebook</a></span>{/block:Ifshareonfacebooklink}
+                            
+                            
+                            
+                            
+                        </div>                                                    
+                       <div class="meta"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5829223418432940";
+/* bufr-side-ad */
+google_ad_slot = "0088147199";
+google_ad_width = 120;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+                    
+                        
+                    </div>
+                </div>
+                  
+                {/block:Photoset}
+                  
+                {block:Video}
+                <div class="video">
+                    <div class="primary">        
+                         {Video-500}  
+                          {block:Caption}
+                        <div class="caption">
+                            {Caption}
+                        </div>
+                        {/block:Caption}
+                        
+                         {block:PermalinkPage}{block:IfDisqusShortname}
+    	    <div id="disqus"><div id="disqus_thread"></div>
+    	    <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+    	    <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript></div>
+    	    {/block:IfDisqusShortname}
+    	  {/block:PermalinkPage}
+                         
+                          {block:IfShowNotes}{block:PostNotes}
+                        	<div class="listnotes" id="listnotes"> 
+                                {PostNotes}        
+                            </div>
+                        {/block:PostNotes} {/block:IfShowNotes}                
+                    </div>
+                    <div class="sidebar">
+                        <div class="date"><a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a> </div>
+                        
+                       
+                        
+                        <div class="meta">
+                        
+                        
+                        {block:IfDisqusShortname}
+          <span class="comments-link"><a href="{Permalink}#disqus_thread" class="permalink">{lang:Comments}</a></span>
+          {block:IfDisqusShortname}
+                        
+                         {block:IfShowNotes}{block:NoteCount}<span class="noteslink"><a href="{Permalink}">{NoteCountWithLabel}</a></span>{/block:NoteCount}{/block:IfShowNotes}<span class="permalink"><a href="{Permalink}">{lang:permalink}</a></span>
+                        </div>                                                    
+                      
+                        {block:Ifshareontwitterlink} <span class="noteslink">/ Share <a href="http://twitter.com/intent/tweet?text=&url={Permalink}{block:Iftwittername}&via={text:Twitter name}{/block:Iftwittername}">Twitter</a></span> {/block:Ifshareontwitterlink} {block:Ifshareonfacebooklink} <span class="noteslink">/ Share <a href="http://www.facebook.com/sharer/sharer.php?u={Permalink}">Facebook</a></span>{/block:Ifshareonfacebooklink}
+                                               
+                        
+                    </div>
+                </div>
+                 
+                {/block:Video}    
+                
+                {block:Link}
+                <div class="link">
+                    <div class="primary">  
+                      
+                        {block:Description}
+                        <div class="caption">
+                            <p>{Description}</p>
+                        </div>
+                        {/block:Description}
+                        
+                        
+                        {block:PermalinkPage}{block:IfDisqusShortname}
+    	    <div id="disqus"><div id="disqus_thread"></div>
+    	    <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+    	    <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript></div>
+    	    {/block:IfDisqusShortname}
+    	  {/block:PermalinkPage}
+
+                        
+                        {block:IfShowNotes}{block:PostNotes}
+                        	<div class="listnotes" id="listnotes"> 
+                                {PostNotes}        
+                            </div>
+                        {/block:PostNotes} {/block:IfShowNotes}     
+                    </div>
+                    <div class="sidebar">
+                    	<h2><a href="{URL}" class="link" {Target}>{Name} &rarr;</a></h2>
+                        <div class="date"><a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a></div>
+                        
+                        <div class="meta">
+                        
+                        {block:IfDisqusShortname}
+          <span class="comments-link"><a href="{Permalink}#disqus_thread" class="permalink">{lang:Comments}</a></span>
+          {block:IfDisqusShortname}
+                        
+                        
+                            {block:IfShowNotes}{block:NoteCount}<span class="noteslink"><a href="{Permalink}">{NoteCountWithLabel}</a></span>{/block:NoteCount}{/block:IfShowNotes} <span class="permalink"><a href="{Permalink}">{lang:permalink}</a></span>
+                        </div>                                                    
+                        
+                        
+                                                
+                        <div class="tags">
+                        
+                         {block:Tags} 
+                        <span><a href="{TagURL}">#{Tag}</a></span>
+                        
+                        {/block:Tags}
+                        
+                         <br /><br />{block:Ifshareontwitterlink} <span class="noteslink">/ Share <a href="http://twitter.com/intent/tweet?text=&url={Permalink}{block:Iftwittername}&via={text:Twitter name}{/block:Iftwittername}">Twitter</a></span> {/block:Ifshareontwitterlink} {block:Ifshareonfacebooklink} <span class="noteslink">/ Share <a href="http://www.facebook.com/sharer/sharer.php?u={Permalink}">Facebook</a></span>{/block:Ifshareonfacebooklink}
+                        </div>
+                        
+                        <div class="meta"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5829223418432940";
+/* bufr-side-ad */
+google_ad_slot = "0088147199";
+google_ad_width = 120;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+                       
+                        
+                        
+                    </div>
+                </div>
+                                  {/block:Link}    
+                
+                {block:Audio}
+                <div class="audio">
+                    <div class="primary">    
+                        {AudioPlayerGrey}
+                        <i class="plays">(Played {Formattedplays} times)</i>
+                        {block:Caption}
+                        <div class="caption">
+                       		{Caption}
+                        </div>
+                        {/block:Caption}
+                        
+                        
+                         <br /><br />{block:PermalinkPage}{block:IfDisqusShortname}
+    	    <div id="disqus"><div id="disqus_thread"></div>
+    	    <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+    	    <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript></div>
+    	    {/block:IfDisqusShortname}
+    	  {/block:PermalinkPage}
+                        
+                        {block:IfShowNotes}{block:PostNotes}
+                        	<div class="listnotes" id="listnotes"> 
+                                {PostNotes}        
+                            </div>
+                        {/block:PostNotes} {/block:IfShowNotes} 
+                    
+                    </div>
+                    <div class="sidebar">
+                        <div class="date"><a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a></div>
+                        
+                        <div class="meta">
+                        
+                        {block:IfDisqusShortname}
+          <span class="comments-link"><a href="{Permalink}#disqus_thread" class="permalink">{lang:Comments}</a></span>
+          {block:IfDisqusShortname}
+                        
+                        
+                            {block:IfShowNotes}{block:NoteCount}<span class="noteslink"><a href="{Permalink}">{NoteCountWithLabel}</a></span>{/block:NoteCount}{/block:IfShowNotes} <span class="permalink"><a href="{Permalink}">{lang:permalink}</a></span>
+                            
+                            
+                            
+                            <br /><br />{block:Ifshareontwitterlink} <span class="noteslink extra">/ Share <a href="http://twitter.com/intent/tweet?text=&url={Permalink}{block:Iftwittername}&via={text:Twitter name}{/block:Iftwittername}">Twitter</a></span> {/block:Ifshareontwitterlink} {block:Ifshareonfacebooklink} <span class="noteslink">/ Share <a href="http://www.facebook.com/sharer/sharer.php?u={Permalink}">Facebook</a></span>{/block:Ifshareonfacebooklink}
+                            
+                            
+                            
+                        </div>                                                    
+                        
+                        
+                                           
+                        
+                    </div>
+                </div>
+                 
+                {/block:Audio} 
+                
+                
+                 {block:Conversation}
+                <div class="conversation">
+                    <div class="primary">  
+                    	<ul>
+                            {block:Lines}
+                                <li class="{Alt}">
+                                    {block:Label}<span class="label">{Label}</span>{/block:Label}
+                                    {Line}
+                                </li>
+                            {/block:Lines}
+                    	</ul>
+                    	
+                    	
+                    	 {block:PermalinkPage}{block:IfDisqusShortname}
+    	    <div id="disqus"><div id="disqus_thread"></div>
+    	    <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+    	    <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript></div>
+    	    {/block:IfDisqusShortname}
+    	  {/block:PermalinkPage}
+
+                    	
+                    	{block:IfShowNotes}{block:PostNotes}
+                        	<div class="listnotes" id="listnotes"> 
+                                {PostNotes}        
+                            </div>
+                        {/block:PostNotes} {/block:IfShowNotes}  
+                    </div>
+                    <div class="sidebar">
+                   		{block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+                         <div class="meta">
+                         
+                         
+                         {block:IfDisqusShortname}
+          <span class="comments-link"><a href="{Permalink}#disqus_thread" class="permalink">{lang:Comments}</a></span>
+          {block:IfDisqusShortname}
+                         
+                         
+                           {block:IfShowNotes}{block:NoteCount}<span class="noteslink"><a href="{Permalink}">{NoteCountWithLabel}</a></span>{/block:NoteCount}{/block:IfShowNotes} <span class="permalink"><a href="{Permalink}">{lang:permalink}</a></span>
+                        </div>                                                    
+                        
+                        
+                        
+                                             
+                        <div class="tags">
+                          <div class="date"><br/><a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a></div>
+
+{block:Ifshareontwitterlink} <span class="noteslink">/ Share <a href="http://twitter.com/intent/tweet?text=&url={Permalink}{block:Iftwittername}&via={text:Twitter name}{/block:Iftwittername}">Twitter</a></span> {/block:Ifshareontwitterlink} {block:Ifshareonfacebooklink} <span class="noteslink">/ Share <a href="http://www.facebook.com/sharer/sharer.php?u={Permalink}">Facebook</a></span>{/block:Ifshareonfacebooklink}
+
+
+                        </div>
+                    </div>
+                </div>
+                
+                                 {/block:Conversation}   
+                
+                {block:Quote}
+                <div class="quote">
+                    <div class="primary">  
+                    	<big>“</big>  
+                        <blockquote>{Quote}</blockquote>
+                         {block:Source}
+                        <div class="caption">
+                            &mdash; {Source}
+                        </div>
+                        {/block:Source}
+                        
+                        
+                        {block:PermalinkPage}{block:IfDisqusShortname}
+    	    <div id="disqus"><div id="disqus_thread"></div>
+    	    <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+    	    <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript></div>
+    	    {/block:IfDisqusShortname}
+    	  {/block:PermalinkPage}
+                        
+                        {block:IfShowNotes}{block:PostNotes}
+                        	<div class="listnotes" id="listnotes"> 
+                                {PostNotes}        
+                            </div>
+                        {/block:PostNotes} {/block:IfShowNotes}
+                    </div>
+                    
+                
+	
+                    <div class="sidebar">
+                   		{block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+                        <div class="date"><a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a></div>
+                        
+                        <div class="meta">
+                        
+                        
+                        {block:IfDisqusShortname}
+          <span class="comments-link"><a href="{Permalink}#disqus_thread" class="permalink">{lang:Comments}</a></span>
+          {block:IfDisqusShortname}
+                        
+                        
+                            {block:IfShowNotes}{block:NoteCount}<span class="noteslink"><a href="{Permalink}">{NoteCountWithLabel}</a></span>{/block:NoteCount}{/block:IfShowNotes} <span class="permalink"><a href="{Permalink}">{lang:permalink}</a></span>
+                            
+                            
+                            
+                            <br /><br />{block:Ifshareontwitterlink} <span class="noteslink extra">/ Share <a href="http://twitter.com/intent/tweet?text=&url={Permalink}{block:Iftwittername}&via={text:Twitter name}{/block:Iftwittername}">Twitter</a> </span> {/block:Ifshareontwitterlink}   {block:Ifshareonfacebooklink}  <span class="noteslink"> / Share <a href="http://www.facebook.com/sharer/sharer.php?u={Permalink}">Facebook</a></span>{/block:Ifshareonfacebooklink}
+                            
+                            
+                            
+                        </div>                                                    
+                        
+          
+                    </div>
+                    
+                    <div class="meta"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5829223418432940";
+/* bufr-side-ad */
+google_ad_slot = "0088147199";
+google_ad_width = 120;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+                    
+                   
+                    
+                    
+                </div>
+                
+                 
+    	  
+                {/block:Quote}      
+                
+               
+                
+                {block:Answer}
+                <div class="answer">
+                    <div class="primary">                    	
+                		<h2>{Asker}: {Question}</h2>
+                        <div class="caption">
+                        	{Answer}
+                        </div>
+                    </div>
+                    
+                    
+                    {block:PermalinkPage}{block:IfDisqusShortname}
+    	    <div id="disqus"><div id="disqus_thread"></div>
+    	    <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+    	    <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript></div>
+    	    {/block:IfDisqusShortname}
+    	  {/block:PermalinkPage}  
+                    
+                    {block:IfShowNotes}{block:PostNotes}
+                        	<div class="listnotes" id="listnotes"> 
+                                {PostNotes}        
+                            </div>
+                        {/block:PostNotes} {/block:IfShowNotes}
+                    
+                    <div class="sidebar">
+                        <div class="date"><a href="{Permalink}">{Month} {DayOfMonth}, {Year}</a></div>
+                        
+                        <div class="meta">
+                        
+                        
+                        {block:IfDisqusShortname}
+          <span class="comments-link"><a href="{Permalink}#disqus_thread" class="permalink">{lang:Comments}</a></span>
+          {block:IfDisqusShortname}
+                        
+                           {block:IfShowNotes}{block:NoteCount}<span class="noteslink"><a href="{Permalink}">{NoteCountWithLabel}</a></span>{/block:NoteCount}{/block:IfShowNotes} <span class="permalink"><a href="{Permalink}">{lang:permalink}</a></span>
+                           
+                           
+                           
+                           {block:Ifshareontwitterlink} <span class="noteslink">/ Share <a href="http://twitter.com/intent/tweet?text=&url={Permalink}{block:Iftwittername}&via={text:Twitter name}{/block:Iftwittername}">Twitter</a></span> {/block:Ifshareontwitterlink} {block:Ifshareonfacebooklink} <span class="noteslink">/ Share <a href="http://www.facebook.com/sharer/sharer.php?u={Permalink}">Facebook</a></span>{/block:Ifshareonfacebooklink}
+                           
+                           
+                           
+                        </div>                                                    
+                        
+                        
+                         
+                        
+                                               
+                        
+                    </div>
+                </div>         
+                       
+                {/block:Answer}  
+            
+            </div>
+        	{/block:Posts}
+                  
+                   					
+        
+        </div>
+        <div class="footerandtop">
+        	<span class="links">
+            	<a title="Archive" href="/archive">{lang:Archive}</a> {block:Iftwittername} | <a href="http://twitter.com/{text:Twitter name}">Twitter</a>{/block:Iftwittername} | <a href="{RSS}" title="RSS">{lang:Subscribe}</a> {block:Ifrandompostlink} | <a href="/random">{lang:Random}</a> {/block:Ifrandompostlink} {block:AskEnabled} | <a href="/ask">{AskLabel}</a> {/block:AskEnabled}
+                    {block:SubmissionsEnabled} | <a href="/submit">{SubmitLabel}</a> {/block:SubmissionsEnabled}
+                    
+                    {block:HasPages}
+					
+						{block:Pages}| <a href="{URL}">{Label}</a> {/block:Pages}
+					
+				{/block:HasPages}
+                    
+            </span>
+            <span class="nav">
+                {block:PreviousPage}<a href="{PreviousPage}" class="prevlink">{lang:Newer}</a>{/block:PreviousPage} {CurrentPage}/{TotalPages}
+                {block:NextPage}<a href="{NextPage}" class="nextlink">{lang:Older}</a>{/block:NextPage}
+            </span>
+            <span class="pinchhost">
+            	Theme: <a href="http://www.pinchhost.com/blog/cleandetail"><strong>Clean Detail</strong></a> by <a href="http://www.pinchhost.com"><strong>PinchHost</strong></a>
+            </span>            
+        </div>
+    </div>	
+	
+	{block:IfDisqusShortname}
+  <script type="text/javascript">
+  //<![CDATA[
+  (function() {
+      var links = document.getElementsByTagName('a');
+      var query = '?';
+      for(var i = 0; i < links.length; i++) {
+      if(links[i].href.indexOf('#disqus_thread') >= 0) {
+          query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+      }
+      }
+      document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/get_num_replies.js' + query + '"></' + 'script>');
+  })();
+  //]]>
+  </script>
+	{/block:IfDisqusShortname}
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24188250-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>
